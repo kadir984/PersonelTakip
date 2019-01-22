@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonelTakip"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="PersonelTakip" Height="252.37" Width="645.202">
     <Grid>
-        
+        <Button x:Name="btnEmployeeOperations" Content="Employee Operations" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="100" IsDefault="True" Click="BtnEmployeeOperations_Click" />
+        <Button Content="Button" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="475,10,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="165,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="320,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="475,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
     </Grid>
 </Window>

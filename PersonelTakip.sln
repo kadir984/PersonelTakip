@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonelTakip", "PersonelTakip\PersonelTakip.csproj", "{FA7EC4F9-ADC2-4399-A738-0E4B43502C97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseCore", "DatabaseCore\DatabaseCore.csproj", "{8AED1300-99AC-4406-AB21-FBE3C8690736}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FA7EC4F9-ADC2-4399-A738-0E4B43502C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7EC4F9-ADC2-4399-A738-0E4B43502C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA7EC4F9-ADC2-4399-A738-0E4B43502C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AED1300-99AC-4406-AB21-FBE3C8690736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AED1300-99AC-4406-AB21-FBE3C8690736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AED1300-99AC-4406-AB21-FBE3C8690736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AED1300-99AC-4406-AB21-FBE3C8690736}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

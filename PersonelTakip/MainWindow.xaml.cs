@@ -24,5 +24,10 @@ namespace PersonelTakip
         {
             InitializeComponent();
         }
+
+        private void BtnEmployeeOperations_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
