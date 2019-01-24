@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,14 @@ namespace PersonelTakip
         public MainWindow()
         {
             InitializeComponent();
+            FileInfo dosya = new FileInfo("sql.txt");
+            DatabaseCore.DbOperation.connectionString = System.IO.File.ReadAllText(dosya.ToString());
         }
 
         private void BtnEmployeeOperations_Click(object sender, RoutedEventArgs e)
         {
-
+            EmployeeOperations employeeOperations = new EmployeeOperations();
+            employeeOperations.Show();
         }
     }
 }

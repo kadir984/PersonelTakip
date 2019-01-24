@@ -8,18 +8,20 @@ using System.Data.SqlClient;
 
 namespace DatabaseCore
 {
-    class DatabaseCore
+    public class DbOperation
     {
-        public static string ConnectionString = "";
-        public static SqlConnection SqlConnection;
+        public static string connectionString = "";
+        public static SqlConnection sqlConnection;
+
         //Todo:baglanti acma / kapatma metodu
         private static void OpenConnection()
         {
-            if (SqlConnection.State == ConnectionState.Closed)
+            sqlConnection = new SqlConnection(connectionString);
+            if (sqlConnection.State == ConnectionState.Closed)
             {
                 try
                 {
-                    SqlConnection.Open();
+                    sqlConnection.Open();
                 }
                 catch (Exception)
                 {
@@ -29,11 +31,11 @@ namespace DatabaseCore
         }
         private static void CloseConnection()
         {
-            if (SqlConnection.State == ConnectionState.Open)
+            if (sqlConnection.State == ConnectionState.Open)
             {
                 try
                 {
-                    SqlConnection.Close();
+                    sqlConnection.Close();
                 }
                 catch (Exception)
                 {
@@ -41,22 +43,22 @@ namespace DatabaseCore
                 }
             }
         }
-        //Crud
-        //Todo:Update, İnsert, Delete işlemleri
 
-        public static int ExecuteCommand()
+        //Todo:Update, İnsert, Delete işlemleri
+        public static int ExecuteCommand(string commandQuery)
         {
             OpenConnection();
-            SqlCommand sqlCommand = new SqlCommand(ConnectionString, SqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(connectionString, sqlConnection);
             int islemSonuc = sqlCommand.ExecuteNonQuery();
             CloseConnection();
             return islemSonuc;
         }
+
         //Todo:Select işlemleri
-        public static DataTable GetTable()
+        public static DataTable GetTable(string selectQuery)
         {
             OpenConnection();
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(selectQuery,sqlConnection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             CloseConnection();
