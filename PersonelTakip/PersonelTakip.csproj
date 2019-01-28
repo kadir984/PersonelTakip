@@ -34,8 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DatabaseCore">
-      <HintPath>..\DatabaseCore\bin\Debug\DatabaseCore.dll</HintPath>
+    <Reference Include="DatabaseCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Google Drive\Serkan Eriş\0DatabaseCore\DatabaseCore\bin\Debug\DatabaseCore.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

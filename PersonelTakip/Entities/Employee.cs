@@ -64,8 +64,7 @@ namespace PersonelTakip.Entities
 
             return sonuc;
         }
-
-
+        
         public static List<Employee> Select()
         {
             string selectQuery = "SELECT * FROM Employees";
@@ -78,10 +77,21 @@ namespace PersonelTakip.Entities
         {
             string selectQuery = "SELECT * FROM Employees WHERE " + sqlKisit;
             DataTable dt = DbOperation.GetTable(selectQuery);
-
-
-
             return ConvertDataTableToList(dt);
+        }
+
+        public static Employee SelectLastEmployee()
+        {
+            string selectQuery = "SELECT TOP(1)* FROM Employees ORDER BY ID DESC";
+            DataTable dt = DbOperation.GetTable(selectQuery);
+
+            Employee sonEmployee = new Employee();
+            sonEmployee.Id = (int)dt.Rows[0]["id"];
+            sonEmployee.FirstName = dt.Rows[0]["FirstName"].ToString();
+            sonEmployee.LastName = dt.Rows[0]["LastName"].ToString();
+
+
+            return sonEmployee;
         }
 
         private static List<Employee> ConvertDataTableToList(DataTable tablo)

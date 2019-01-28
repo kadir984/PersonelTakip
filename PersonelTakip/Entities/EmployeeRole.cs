@@ -16,7 +16,7 @@ namespace PersonelTakip.Entities
 
         public static List<EmployeeRole> Select()
         {
-            string selectQuery = "SELECT * FROM EmployeesRoles";
+            string selectQuery = "SELECT * FROM EmployeeRoles";
             DataTable dt = DbOperation.GetTable(selectQuery);
 
             return ConvertDataTableToList(dt);
@@ -24,36 +24,14 @@ namespace PersonelTakip.Entities
 
         public static List<EmployeeRole> Select(string sqlKisit)
         {
-            string selectQuery = "SELECT * FROM EmployeesRoles WHERE " + sqlKisit;
+            string selectQuery = "SELECT * FROM EmployeeRoles WHERE " + sqlKisit;
             DataTable dt = DbOperation.GetTable(selectQuery);
-
-
-
             return ConvertDataTableToList(dt);
         }
-
-        private static List<EmployeeRole> ConvertDataTableToList(DataTable tablo)
-        {
-            List<EmployeeRole> employeeRoles = new List<EmployeeRole>();
-
-            //Todo: bunun kolay yolununu arastir.
-            for (int i = 0; i < tablo.Rows.Count; i++)
-            {
-                EmployeeRole employee = new EmployeeRole();
-                employee.Id = Convert.ToInt32(tablo.Rows[i]["Id"]);
-                employee.EmployeeId = Convert.ToInt32(tablo.Rows[i]["EmployeeId"]);
-                employee.RoleId = Convert.ToInt32(tablo.Rows[i]["RoleId"]);
-
-                employeeRoles.Add(employee);
-            }
-
-            return employeeRoles;
-        }
-
-
+        
         public int Insert()
         {
-            string insertQuery = " INSERT INTO [dbo].[EmployeesRoles] ([EmployeeId],[RoleId])  VALUES('" + EmployeeId + "','" + RoleId + "') ";
+            string insertQuery = " INSERT INTO [dbo].[EmployeeRoles] ([EmployeeId],[RoleId])  VALUES('" + EmployeeId + "','" + RoleId + "') ";
 
             int sonuc = DbOperation.ExecuteCommand(insertQuery);
             if (sonuc > 0)
@@ -66,6 +44,39 @@ namespace PersonelTakip.Entities
             }
 
             return sonuc;
+        }
+
+        private static List<EmployeeRole> ConvertDataTableToList(DataTable tablo)
+        {
+            List<EmployeeRole> employeeRoles = new List<EmployeeRole>();
+
+            //Todo: bunun kolay yolununu arastir.
+            for (int i = 0; i < tablo.Rows.Count; i++)
+            {
+                EmployeeRole employeeRol = new EmployeeRole();
+                employeeRol.Id = Convert.ToInt32(tablo.Rows[i]["Id"]);
+                employeeRol.EmployeeId = Convert.ToInt32(tablo.Rows[i]["EmployeeId"]);
+                employeeRol.RoleId = Convert.ToInt32(tablo.Rows[i]["RoleId"]);
+
+                employeeRoles.Add(employeeRol);
+            }
+
+            return employeeRoles;
+        }
+
+        public static int DisableEmployeeRoleWithEmployeeId(int employeeId)
+        {
+            string updateQuery = @"UPDATE [dbo].[EmployeeRoles] SET [Status] = 'False',[EndDate] = getdate() WHERE EmployeeId = " + employeeId;
+            return DbOperation.ExecuteCommand(updateQuery);
+        }
+
+        public static List<EmployeeRole> GetEmployeRolesListWithEmployeeId(int employeeId)
+        {
+            string selectQuery = "SELECT * FROM EmployeeRoles WHERE Status = 'True' AND  EmployeeId = " + employeeId;
+
+            DataTable dt = DbOperation.GetTable(selectQuery);
+
+            return ConvertDataTableToList(dt);
         }
     }
 }

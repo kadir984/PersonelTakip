@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace PersonelTakip
 {
-    /// <summary>
-    /// Interaction logic for EmployeeOperations.xaml
-    /// </summary>
+    // <summary>
+    // Interaction logic for EmployeeOperations.xaml
+    // </summary>
     public partial class EmployeeOperations : Window
     {
         public EmployeeOperations()
@@ -33,6 +33,11 @@ namespace PersonelTakip
             tbxId.Text = "0";
             tbxFirstName.Text = "";
             tbxLastName.Text = "";
+
+            foreach (CheckBox item in lstEmployeeRoles.Items)
+            {
+                item.IsChecked=false;
+            }
         }
 
         private void RoleFill()
@@ -45,7 +50,6 @@ namespace PersonelTakip
                 checkBox.Tag = roles[i].Id;
                 lstEmployeeRoles.Items.Add(checkBox);
             }
-
         }
 
         private void LoadEmployeesGrid()
@@ -64,12 +68,39 @@ namespace PersonelTakip
             if (employee.Id == 0)//insert
             {
                 int sonuc = employee.Insert();
-                //todo: employeeroles e kayitlari yolla
+
                 if (sonuc > 0)
                 {
-                    LoadEmployeesGrid();
-                    MessageBox.Show("Kayit basarili.");
-                    BtnNew_Click(null, null);
+                    //Son kayidi getir Employee Id sini ogren!
+                    Employee sonEmploye = Employee.SelectLastEmployee();
+
+                    int employeeRoleKayitSayisi = 0;
+                    int isaretliRoleSayisi = 0;
+                    foreach (CheckBox itemChkEmployeeRole in lstEmployeeRoles.Items)
+                    {
+                        if ((bool)itemChkEmployeeRole.IsChecked)
+                        {
+                            isaretliRoleSayisi++;
+
+                            EmployeeRole yeniEmployeeRole = new EmployeeRole();
+                            yeniEmployeeRole.RoleId = Convert.ToInt32(itemChkEmployeeRole.Tag);
+                            yeniEmployeeRole.EmployeeId = sonEmploye.Id;
+                            employeeRoleKayitSayisi = employeeRoleKayitSayisi + yeniEmployeeRole.Insert();
+                        }
+                    }
+
+                    if (employeeRoleKayitSayisi == isaretliRoleSayisi)
+                    {
+                        LoadEmployeesGrid();
+                        MessageBox.Show("Kayit basarili.");
+                        BtnNew_Click(null, null);
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Hay aksi!!!!");
                 }
             }
             else if (employee.Id > 0) //update
@@ -77,9 +108,30 @@ namespace PersonelTakip
                 int sonuc = employee.Update();
                 if (sonuc > 0)
                 {
-                    LoadEmployeesGrid();
-                    MessageBox.Show("Update basarili.");
-                    BtnNew_Click(null, null);
+                    //1.Adim Mevcut EmployeeRolelerini Sonlandir(Status = false ve EndDate ver.)
+                    int sonlananRoleSayisi = EmployeeRole.DisableEmployeeRoleWithEmployeeId(employee.Id);
+                    //2.Adim Secili olan CheckBoxtaki rolleri insert et.
+                    int employeeRoleKayitSayisi = 0;
+                    int isaretliRoleSayisi = 0;
+                    foreach (CheckBox itemChkEmployeeRole in lstEmployeeRoles.Items)
+                    {
+                        if ((bool)itemChkEmployeeRole.IsChecked)
+                        {
+                            isaretliRoleSayisi++;
+
+                            EmployeeRole yeniEmployeeRole = new EmployeeRole();
+                            yeniEmployeeRole.RoleId = Convert.ToInt32(itemChkEmployeeRole.Tag);
+                            yeniEmployeeRole.EmployeeId = employee.Id;
+                            employeeRoleKayitSayisi = employeeRoleKayitSayisi + yeniEmployeeRole.Insert();
+                        }
+                    }
+
+                    if (employeeRoleKayitSayisi == isaretliRoleSayisi)
+                    {
+                        LoadEmployeesGrid();
+                        MessageBox.Show("Update basarili.");
+                        BtnNew_Click(null, null);
+                    }
                 }
             }
         }
@@ -91,26 +143,20 @@ namespace PersonelTakip
             tbxFirstName.Text = employee.FirstName;
             tbxLastName.Text = employee.LastName;
 
+            List<EmployeeRole> employeeRoles = EmployeeRole.GetEmployeRolesListWithEmployeeId(employee.Id);
 
-            List<EmployeeRole> employeeRoles = EmployeeRole.Select("EmployeeId="+ employee.Id);
-
-            #region checkbox
-
-            for (int i = 0; i < lstEmployeeRoles.Items.Count; i++)
+            foreach (CheckBox itemChkBox in lstEmployeeRoles.Items)
             {
-                ((CheckBox)lstEmployeeRoles.Items[i]).IsChecked = false;
+                itemChkBox.IsChecked = false;
 
-                for (int j = 0; j < employeeRoles.Count; j++)
+                foreach (EmployeeRole itemEmployeeRole in employeeRoles)
                 {
-                    if (((CheckBox)lstEmployeeRoles.Items[i]).Tag.ToString() == employeeRoles[j].RoleId.ToString())
-
+                    if (Convert.ToInt32(itemChkBox.Tag) == itemEmployeeRole.RoleId)
                     {
-                        ((CheckBox)lstEmployeeRoles.Items[i]).IsChecked = true;
+                        itemChkBox.IsChecked = true;
                     }
                 }
             }
-
-            #endregion
         }
     }
 }

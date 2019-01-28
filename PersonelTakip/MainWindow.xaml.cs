@@ -25,7 +25,7 @@ namespace PersonelTakip
         {
             InitializeComponent();
             FileInfo dosya = new FileInfo("sql.txt");
-            DatabaseCore.DbOperation.connectionString = System.IO.File.ReadAllText(dosya.ToString());
+            DatabaseCore.DbOperation.ConnectionString = System.IO.File.ReadAllText(dosya.ToString());
         }
 
         private void BtnEmployeeOperations_Click(object sender, RoutedEventArgs e)
