@@ -33,5 +33,11 @@ namespace PersonelTakip
             EmployeeOperations employeeOperations = new EmployeeOperations();
             employeeOperations.Show();
         }
+
+        private void BtnSetEmployeeRole_Click(object sender, RoutedEventArgs e)
+        {
+            SetEmployeeRole setEmployeeRole = new SetEmployeeRole();
+            setEmployeeRole.Show();
+        }
     }
 }
