@@ -158,5 +158,23 @@ namespace PersonelTakip
                 }
             }
         }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Employee employee = new Employee();
+            employee.Id = Convert.ToInt32(tbxId.Text);
+            if (employee.Id != 0)
+            {
+                employee.Delete();
+                LoadEmployeesGrid();
+                BtnNew_Click(null, null);
+                MessageBox.Show("Silindi.");
+            }
+            else if (employee.Id == 0)
+            {
+                MessageBox.Show("Abone Seçiniz.");
+            }
+
+        }
     }
 }

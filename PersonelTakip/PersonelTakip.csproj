@@ -34,9 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DatabaseCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Google Drive\Serkan Eriş\0DatabaseCore\DatabaseCore\bin\Debug\DatabaseCore.dll</HintPath>
+    <Reference Include="DatabaseCore">
+      <HintPath>..\DatabaseCore\bin\Debug\DatabaseCore.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,8 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SetEmployeeRole.xaml.cs">
-      <DependentUpon>SetEmployeeRole.xaml</DependentUpon>
+    <Compile Include="Entities\Department.cs" />
+    <Compile Include="Roles.xaml.cs">
+      <DependentUpon>Roles.xaml</DependentUpon>
     </Compile>
     <Page Include="EmployeeOperations.xaml">
       <SubType>Designer</SubType>
@@ -83,7 +83,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SetEmployeeRole.xaml">
+    <Page Include="Roles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

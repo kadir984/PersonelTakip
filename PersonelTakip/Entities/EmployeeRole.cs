@@ -16,7 +16,7 @@ namespace PersonelTakip.Entities
 
         public static List<EmployeeRole> Select()
         {
-            string selectQuery = "SELECT * FROM EmployeeRoles";
+            string selectQuery = "SELECT * FROM EmployeesRoles";
             DataTable dt = DbOperation.GetTable(selectQuery);
 
             return ConvertDataTableToList(dt);
@@ -24,14 +24,14 @@ namespace PersonelTakip.Entities
 
         public static List<EmployeeRole> Select(string sqlKisit)
         {
-            string selectQuery = "SELECT * FROM EmployeeRoles WHERE " + sqlKisit;
+            string selectQuery = "SELECT * FROM EmployeesRoles WHERE " + sqlKisit;
             DataTable dt = DbOperation.GetTable(selectQuery);
             return ConvertDataTableToList(dt);
         }
         
         public int Insert()
         {
-            string insertQuery = " INSERT INTO [dbo].[EmployeeRoles] ([EmployeeId],[RoleId])  VALUES('" + EmployeeId + "','" + RoleId + "') ";
+            string insertQuery = " INSERT INTO [dbo].[EmployeesRoles] ([EmployeeId],[RoleId])  VALUES ('" + EmployeeId + "','" + RoleId + "') ";
 
             int sonuc = DbOperation.ExecuteCommand(insertQuery);
             if (sonuc > 0)
@@ -66,13 +66,13 @@ namespace PersonelTakip.Entities
 
         public static int DisableEmployeeRoleWithEmployeeId(int employeeId)
         {
-            string updateQuery = @"UPDATE [dbo].[EmployeeRoles] SET [Status] = 'False',[EndDate] = getdate() WHERE EmployeeId = " + employeeId;
+            string updateQuery = @"UPDATE [dbo].[EmployeesRoles] SET [Status] = 'False',[EndDate] = getdate() WHERE EmployeeId = " + employeeId;
             return DbOperation.ExecuteCommand(updateQuery);
         }
 
         public static List<EmployeeRole> GetEmployeRolesListWithEmployeeId(int employeeId)
         {
-            string selectQuery = "SELECT * FROM EmployeeRoles WHERE Status = 'True' AND  EmployeeId = " + employeeId;
+            string selectQuery = "SELECT * FROM EmployeesRoles WHERE Status = 'True' AND  EmployeeId = " + employeeId;
 
             DataTable dt = DbOperation.GetTable(selectQuery);
 

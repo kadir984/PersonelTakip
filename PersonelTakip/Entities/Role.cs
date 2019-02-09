@@ -38,5 +38,56 @@ namespace PersonelTakip.Entities
 
             return roles;
         }
+
+        public int Insert()
+        {
+            string insertQuery = " INSERT INTO [dbo].[Roles] ([Name])  VALUES ('" + Name + "') ";
+
+            int sonuc = DbOperation.ExecuteCommand(insertQuery);
+            if (sonuc > 0)
+            {
+                //basarili
+            }
+            else
+            {
+                //sorun var!!!!!!!
+            }
+
+            return sonuc;
+        }
+
+        public int Update()
+        {
+            string updateQuery = " UPDATE [dbo].[Roles] SET [Name] = '" + Name + "'  WHERE Id =  " + Id;
+
+            int sonuc = DbOperation.ExecuteCommand(updateQuery);
+            if (sonuc > 0)
+            {
+                //basarili
+            }
+            else
+            {
+                //sorun var!!!!!!!
+            }
+
+            return sonuc;
+        }
+
+        public int Delete()
+        {
+            string deleteQuery = " DELETE FROM [dbo].[Roles] WHERE Id =  " + Id;
+
+            int sonuc = DbOperation.ExecuteCommand(deleteQuery);
+            if (sonuc > 0)
+            {
+                //basarili
+            }
+            else
+            {
+                //sorun var!!!!!!!
+            }
+
+            return sonuc;
+        }
     }
 }

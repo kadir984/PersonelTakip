@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonelTakip"
         mc:Ignorable="d"
-        Title="PersonelTakip" Height="252.37" Width="645.202">
+        Title="PersonelTakip" Height="200.063" Width="562.943">
     <Grid>
-        <Button x:Name="btnEmployeeOperations" Content="Employee Operations" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="100" IsDefault="True" Click="BtnEmployeeOperations_Click" />
-        <Button x:Name="btnSetEmployeeRole" Content="Set Employee Role" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top" Width="150" Height="100" Click="BtnSetEmployeeRole_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="475,10,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="165,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="320,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="475,115,0,0" VerticalAlignment="Top" Width="150" Height="100"/>
+        <Button x:Name="btnEmployeeOperations" Content="Employee Operations" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Height="146" IsDefault="True" Click="BtnEmployeeOperations_Click" />
+        <Button x:Name="btnAuthorizations" Content="Authorizations" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top" Width="200" Height="70"/>
+        <Button x:Name="btnLoginLogs" Content="Login Logs" HorizontalAlignment="Left" Margin="215,85,0,0" VerticalAlignment="Top" Width="200" Height="71"/>
+        <GroupBox Header="Set Operations" HorizontalAlignment="Left" Height="146" Margin="420,10,0,0" VerticalAlignment="Top" Width="125">
+            <Grid Margin="0,0,-2,-12">
+                <Button x:Name="btnRole" Content="Role" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="BtnRole_Click"/>
+                <Button x:Name="btnDepartment" Content="Department" HorizontalAlignment="Left" Margin="5,45,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                <Button x:Name="btnDoor" Content="Door" HorizontalAlignment="Left" Margin="5,80,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

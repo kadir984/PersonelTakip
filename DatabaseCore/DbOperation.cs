@@ -48,7 +48,7 @@ namespace DatabaseCore
         public static int ExecuteCommand(string commandQuery)
         {
             OpenConnection();
-            SqlCommand sqlCommand = new SqlCommand(connectionString, sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(commandQuery, sqlConnection);
             int islemSonuc = sqlCommand.ExecuteNonQuery();
             CloseConnection();
             return islemSonuc;

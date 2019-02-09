@@ -25,7 +25,7 @@ namespace PersonelTakip
         {
             InitializeComponent();
             FileInfo dosya = new FileInfo("sql.txt");
-            DatabaseCore.DbOperation.ConnectionString = System.IO.File.ReadAllText(dosya.ToString());
+            DatabaseCore.DbOperation.connectionString = System.IO.File.ReadAllText(dosya.ToString());
         }
 
         private void BtnEmployeeOperations_Click(object sender, RoutedEventArgs e)
@@ -34,10 +34,11 @@ namespace PersonelTakip
             employeeOperations.Show();
         }
 
-        private void BtnSetEmployeeRole_Click(object sender, RoutedEventArgs e)
+        private void BtnRole_Click(object sender, RoutedEventArgs e)
         {
-            SetEmployeeRole setEmployeeRole = new SetEmployeeRole();
-            setEmployeeRole.Show();
+            Roles roles = new Roles();
+            roles.Show();
+
         }
     }
 }

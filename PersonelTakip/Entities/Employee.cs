@@ -86,7 +86,7 @@ namespace PersonelTakip.Entities
             DataTable dt = DbOperation.GetTable(selectQuery);
 
             Employee sonEmployee = new Employee();
-            sonEmployee.Id = (int)dt.Rows[0]["id"];
+            sonEmployee.Id = (int)dt.Rows[0]["Id"];
             sonEmployee.FirstName = dt.Rows[0]["FirstName"].ToString();
             sonEmployee.LastName = dt.Rows[0]["LastName"].ToString();
 
