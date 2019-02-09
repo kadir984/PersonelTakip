@@ -40,5 +40,11 @@ namespace PersonelTakip
             roles.Show();
 
         }
+
+        private void BtnDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            Departments departments = new Departments();
+            departments.Show();
+        }
     }
 }

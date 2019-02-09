@@ -55,5 +55,39 @@ namespace PersonelTakip.Entities
 
             return sonuc;
         }
+
+        public int Update()
+        {
+            string updateQuery = " UPDATE [dbo].[Departments] SET [Name] = '" + Name + "'  WHERE Id =  " + Id;
+
+            int sonuc = DbOperation.ExecuteCommand(updateQuery);
+            if (sonuc > 0)
+            {
+                //basarili
+            }
+            else
+            {
+                //sorun var!!!!!!!
+            }
+
+            return sonuc;
+        }
+
+        public int Delete()
+        {
+            string deleteQuery = " DELETE FROM [dbo].[Departments] WHERE Id =  " + Id;
+
+            int sonuc = DbOperation.ExecuteCommand(deleteQuery);
+            if (sonuc > 0)
+            {
+                //basarili
+            }
+            else
+            {
+                //sorun var!!!!!!!
+            }
+
+            return sonuc;
+        }
     }
 }

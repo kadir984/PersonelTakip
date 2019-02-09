@@ -13,7 +13,7 @@
         <GroupBox Header="Set Operations" HorizontalAlignment="Left" Height="146" Margin="420,10,0,0" VerticalAlignment="Top" Width="125">
             <Grid Margin="0,0,-2,-12">
                 <Button x:Name="btnRole" Content="Role" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="BtnRole_Click"/>
-                <Button x:Name="btnDepartment" Content="Department" HorizontalAlignment="Left" Margin="5,45,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
+                <Button x:Name="btnDepartment" Content="Department" HorizontalAlignment="Left" Margin="5,45,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="BtnDepartment_Click"/>
                 <Button x:Name="btnDoor" Content="Door" HorizontalAlignment="Left" Margin="5,80,0,0" VerticalAlignment="Top" Width="100" Height="30"/>
             </Grid>
         </GroupBox>

@@ -65,7 +65,7 @@ namespace PersonelTakip
             RoleFill();
             BtnNew_Click(null, null);
         }
-
+        
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             Role roles = new Role();
