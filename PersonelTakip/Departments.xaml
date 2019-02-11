@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonelTakip"
         mc:Ignorable="d"
-        Title="Departments" Height="150.551" Width="376.471">
+        Title="Doors" Height="160" Width="450">
     <Grid>
         <Label Content="Id :" HorizontalAlignment="Left" Margin="6,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Department:" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonelTakip"
         mc:Ignorable="d"
-        Title="Roles" Height="174.528" Width="370.986">
+        Title="Doors" Height="160" Width="450">
     <Grid>
         <Label Content="Id :" HorizontalAlignment="Left" Margin="6,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Role Name :" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top"/>

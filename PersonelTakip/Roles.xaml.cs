@@ -23,15 +23,9 @@ namespace PersonelTakip
         public Roles()
         {
             InitializeComponent();
-            RoleFill();
+            LoadRolesGrid();
         }
-
-        private void RoleFill()
-        {
-            List<Role> roles = Role.Select();
-            dgRoles.ItemsSource = roles;
-        }
-
+        
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
             tbxRoleId.Text = "0";
@@ -48,21 +42,21 @@ namespace PersonelTakip
             {
                 int sonuc = role.Insert();
                 MessageBox.Show("Kayıt Başarılı.");
-                RoleFill();
+                LoadRolesGrid();
                 BtnNew_Click(null, null);
             }
             else if (role.Id!=0)//update
             {
                 int sonuc = role.Update();
                 MessageBox.Show("Güncelleme Başarılı.");
-                RoleFill();
+                LoadRolesGrid();
                 BtnNew_Click(null, null);
             }
             else
             {
                 MessageBox.Show("Role ismi yazınız.");
             }
-            RoleFill();
+            LoadRolesGrid();
             BtnNew_Click(null, null);
         }
         

@@ -46,5 +46,17 @@ namespace PersonelTakip
             Departments departments = new Departments();
             departments.Show();
         }
+
+        private void BtnDoor_Click(object sender, RoutedEventArgs e)
+        {
+            Doors doors = new Doors();
+            doors.Show();
+        }
+
+        private void BtnAuthorizations_Click(object sender, RoutedEventArgs e)
+        {
+            Authorizations authorizations = new Authorizations();
+            authorizations.Show();
+        }
     }
 }

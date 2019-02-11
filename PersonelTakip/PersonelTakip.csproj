@@ -57,14 +57,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Authorizations.xaml.cs">
+      <DependentUpon>Authorizations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Departments.xaml.cs">
       <DependentUpon>Departments.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Doors.xaml.cs">
+      <DependentUpon>Doors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Authorization.cs" />
     <Compile Include="Entities\Department.cs" />
+    <Compile Include="Entities\Door.cs" />
     <Compile Include="Roles.xaml.cs">
       <DependentUpon>Roles.xaml</DependentUpon>
     </Compile>
+    <Page Include="Authorizations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Departments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Doors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

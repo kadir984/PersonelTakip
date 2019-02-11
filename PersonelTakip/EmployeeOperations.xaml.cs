@@ -174,7 +174,6 @@ namespace PersonelTakip
             {
                 MessageBox.Show("Abone Seçiniz.");
             }
-
         }
     }
 }
