@@ -41,7 +41,15 @@ namespace PersonelTakip.Entities
 
             return listauth;
         }
-        
+
+        public static List<Authorization> GetAuthorizationListWithRoleId(int RoleId)
+        {
+            string selectQuery = "SELECT * FROM Authorizations WHERE RoleId = " + RoleId;
+
+            DataTable dt = DbOperation.GetTable(selectQuery);
+
+            return ConvertDataTableToList(dt);
+        }
 
         public int Insert()
         {

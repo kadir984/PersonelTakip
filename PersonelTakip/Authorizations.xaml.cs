@@ -23,60 +23,92 @@ namespace PersonelTakip
         public Authorizations()
         {
             InitializeComponent();
-            AuthFill();
             LoadAuthorizationsGrid();
+            DoorFill();
         }
         private void LoadAuthorizationsGrid()
         {
             dgAuthorizations.ItemsSource = null;
-            dgAuthorizations.ItemsSource = Authorization.Select();
+            dgAuthorizations.ItemsSource = Role.Select();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            //Authorization authorization = new Authorization();
-            //authorization.RoleId = Convert.ToInt32(.Text);
-            //authorization.DoorId = Convert.ToInt32(tbxRoleId.Text);
+            //Role roles = (Role) dgAuthorizations.SelectedItem;
+            //Role roles2 = new Role();
+            //roles2.Name = roles.Name;
 
-            //if (role.Id == 0 && tbxRoleName.Text != "")//insert
-            //{
-            //    int sonuc = role.Insert();
-            //    MessageBox.Show("Kayıt Başarılı.");
-            //    LoadRolesGrid();
-            //}
-            //else if (role.Id != 0)//update
-            //{
-            //    int sonuc = role.Update();
-            //    MessageBox.Show("Güncelleme Başarılı.");
-            //    LoadRolesGrid();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Role ismi yazınız.");
 
+            //if (employee.Id == 0)//insert
+            //{
+            //    int sonuc = employee.Insert();
+
+            //    if (sonuc > 0)
+            //    {
+            //        //Son kayidi getir Employee Id sini ogren!
+            //        Employee sonEmploye = Employee.SelectLastEmployee();
+
+            //        int employeeRoleKayitSayisi = 0;
+            //        int isaretliRoleSayisi = 0;
+            //        foreach (CheckBox itemChkEmployeeRole in lstEmployeeRoles.Items)
+            //        {
+            //            if ((bool)itemChkEmployeeRole.IsChecked)
+            //            {
+            //                isaretliRoleSayisi++;
+
+            //                EmployeeRole yeniEmployeeRole = new EmployeeRole();
+            //                yeniEmployeeRole.RoleId = Convert.ToInt32(itemChkEmployeeRole.Tag);
+            //                yeniEmployeeRole.EmployeeId = sonEmploye.Id;
+            //                employeeRoleKayitSayisi = employeeRoleKayitSayisi + yeniEmployeeRole.Insert();
+            //            }
+            //        }
+
+            //        if (employeeRoleKayitSayisi == isaretliRoleSayisi)
+            //        {
+            //            LoadEmployeesGrid();
+            //            MessageBox.Show("Kayit basarili.");
+            //            BtnNew_Click(null, null);
+            //        }
+
+
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Hay aksi!!!!");
+            //    }
+            //}
         }
 
-        private void AuthFill()
+        private void DoorFill()
         {
-            List<Authorization> auth = Authorization.Select();
-            for (int i = 0; i < auth.Count; i++)
+            List<Door> authdoors = Door.Select();
+            for (int i = 0; i < authdoors.Count; i++)
             {
                 CheckBox checkBox = new CheckBox();
-                checkBox.Content = auth[i].RoleId;
-                checkBox.Tag = auth[i].DoorId;
+                checkBox.Content = authdoors[i].Name;
+                checkBox.Tag = authdoors[i].Id;
                 lstAuthorizations.Items.Add(checkBox);
             }
         }
-
-
-        private void BtnDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void DgAuthorizations_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            Role roles = (Role)dgAuthorizations.SelectedItem;
 
+            List<Authorization> Authlist = Authorization.GetAuthorizationListWithRoleId(roles.Id);
+
+            foreach (CheckBox itemChkBox in lstAuthorizations.Items)
+            {
+                itemChkBox.IsChecked = false;
+
+                foreach (Authorization itemdoor in Authlist)
+                {
+                    if (Convert.ToInt32(itemChkBox.Tag) == itemdoor.DoorId)
+                    {
+                        itemChkBox.IsChecked = true;
+                    }
+                }
+            }
         }
     }
 }
